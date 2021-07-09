@@ -12,10 +12,10 @@ string readBuffer;
 CURL *curl;
 CURLcode res;
 
-int SUCCESS = 200;
+int SUCCESS = 500;
 int ERROR = 0;
 
-int *response_code;
+int response_code;
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -72,6 +72,7 @@ int main(void) {
     
   int Size = 466551;
     
+    
     while(Size--) {
         string pass;
         cin>>pass;
@@ -81,14 +82,14 @@ int main(void) {
         
     
         
-        if ( readBuffer.length() != ERROR  ) {
+        if ( response_code == 200  ) {
             
             cout << endl << "Response code : " << response_code << endl;
             cout << readBuffer << endl;
             
             break;
         }
-
+        
         readBuffer.clear();
         
         
