@@ -14,7 +14,7 @@ router.post('/add', async (req, res) => {
 
     await newAdd.save((err) => {
         if (err) {
-            res.status(500).json({
+            res.status(400).json({
                 error: 'Error in server!',
             });
         } else {
@@ -30,7 +30,9 @@ router.post('/login', async (req, res) => {
     if (user) {
         res.status(200).json(user);
     } else {
-        res.status(500).json();
+        res.status(400).json({
+            error: 'Wrong username or password!',
+        });
     }
 });
 

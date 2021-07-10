@@ -12,8 +12,7 @@ string readBuffer;
 CURL *curl;
 CURLcode res;
 
-int SUCCESS = 500;
-int ERROR = 0;
+
 
 int response_code;
 
@@ -27,7 +26,7 @@ void make_post_req(string username,string password) {
 
     string temp = "{\n    \"username\": \""+username+"\",\n    \"password\" : \""+password+"\"\n\n}";
     
-    cout << temp << endl;
+   // cout << temp << endl;
 
     char *data = new char[temp.size()+1];
     copy(temp.begin(), temp.end(), data);
@@ -79,16 +78,15 @@ int main(void) {
    
         make_post_req(user,pass);
         
-        
+        cout << "  " << response_code << endl << readBuffer << endl << endl;
     
         
         if ( response_code == 200  ) {
-            
-            cout << endl << "Response code : " << response_code << endl;
-            cout << readBuffer << endl;
-            
             break;
         }
+        
+
+        
         
         readBuffer.clear();
         
